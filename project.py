@@ -6,6 +6,13 @@ winy = 500
 win = pygame.display.set_mode((winx, winy))
 pygame.display.set_caption('The fastest finger in the world')
 
+# Вот здесь будет лаунчер
+''' laaaaaaaaaaaaaaa
+uuuuuuuuuuuuuuuu
+ncheeeeeeeeeeerrrr'''
+
+
+
 p1 = pygame.transform.scale(pygame.image.load('Up.png'), ((15 * winx) // 100, (15 * winy) // 100))
 p2 = pygame.transform.scale(pygame.image.load('Down.png'), ((15 * winx) // 100, (15 * winy) // 100))
 p3 = pygame.transform.scale(pygame.image.load('Left.png'), ((15 * winx) // 100, (15 * winy) // 100))

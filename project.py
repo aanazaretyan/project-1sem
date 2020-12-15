@@ -7,11 +7,11 @@ win = pygame.display.set_mode((winx, winy))
 pygame.display.set_caption('The fastest finger in the world')
 
 
-albert.p1 = pygame.transform.scale(pygame.image.load('albert.Up.png'), ((15 * winx) // 100, (15 * winy) // 100))
-albert.p2 = pygame.transform.scale(pygame.image.load('albert.Down.png'), ((15 * winx) // 100, (15 * winy) // 100))
-albert.p3 = pygame.transform.scale(pygame.image.load('albert.Left.png'), ((15 * winx) // 100, (15 * winy) // 100))
-albert.p4 = pygame.transform.scale(pygame.image.load('albert.Right.png'), ((15 * winx) // 100, (15 * winy) // 100))
-albert.Bg = pygame.transform.scale(pygame.image.load('albert.Bg.png'), (winx, winy))
+albert_p1 = pygame.transform.scale(pygame.image.load('albert_Up.png'), ((15 * winx) // 100, (15 * winy) // 100))
+albert_p2 = pygame.transform.scale(pygame.image.load('albert_Down.png'), ((15 * winx) // 100, (15 * winy) // 100))
+albert_p3 = pygame.transform.scale(pygame.image.load('albert_Left.png'), ((15 * winx) // 100, (15 * winy) // 100))
+albert_p4 = pygame.transform.scale(pygame.image.load('albert_Right.png'), ((15 * winx) // 100, (15 * winy) // 100))
+albert_Bg = pygame.transform.scale(pygame.image.load('albert_Bg.png'), (winx, winy))
 
 x = [(10 * winx) // 100, (32 * winx) // 100, (53 * winx) // 100, (74 * winx) // 100]
 y = (32 * winy) // 100
@@ -42,19 +42,19 @@ while game:
 
 game = True
 while game:
-    win.blit(albert.Bg, (0,0))
+    win.blit(albert_Bg, (0,0))
     win.blit(text, textpos)
     win.blit(L_score[L], L_scorepos)
     win.blit(R_score[R], R_scorepos)
     for i in range(4):
         if c[i] == 1:
-            win.blit(albert.p1, (x[i], y))
+            win.blit(albert_p1, (x[i], y))
         elif c[i] == 2:
-            win.blit(albert.p2, (x[i], y))
+            win.blit(albert_p2, (x[i], y))
         elif c[i] == 3:
-            win.blit(albert.p3, (x[i], y))
+            win.blit(albert_p3, (x[i], y))
         else:
-            win.blit(albert.p4, (x[i], y))
+            win.blit(albert_p4, (x[i], y))
     pygame.display.update()
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
@@ -101,7 +101,7 @@ while game:
             r = []
             l = []
             if L == 5:
-                win.blit(albert.Bg, (0,0))
+                win.blit(albert_Bg, (0,0))
                 win.blit(L_score[L], L_scorepos)
                 win.blit(vic1, vicpos)
                 win.blit(R_score[R], R_scorepos)
@@ -120,7 +120,7 @@ while game:
             r = []
             l = []
             if R == 5:
-                win.blit(albert.Bg, (0,0))
+                win.blit(albert_Bg, (0,0))
                 win.blit(L_score[L], L_scorepos)
                 win.blit(vic2, vicpos)
                 win.blit(R_score[R], R_scorepos)

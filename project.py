@@ -175,12 +175,12 @@ elif a == 2:
     game_over=False #конец игры    
     screen=pygame.display.set_mode((display)) #устанавливаем размер экрана
     pygame.display.set_caption("Supernatural Quest") #даем название игры
-    icon=pygame.image.load("icon.png")
+    icon=pygame.image.load("SpritesKaren/icon.png")
     pygame.display.set_icon(icon) #установка иконы игры
-    hero_image=pygame.image.load("dean1.2.png") #загрузка картинки персонажа
-    hero_images_right=[pygame.image.load("dean1.4.png"), pygame.image.load("dean1.8.png"),pygame.image.load("dean1.9.png")]
-    hero_images_left=[pygame.image.load("dean1.5.png"),pygame.image.load("dean1.6.png"),pygame.image.load("dean1.7.png")]
-    background_image=pygame.image.load("background.png") #загружаем фон
+    hero_image=pygame.image.load("SpritesKaren/dean1.2.png") #загрузка картинки персонажа
+    hero_images_right=[pygame.image.load("SpritesKaren/dean1.4.png"), pygame.image.load("SpritesKaren/dean1.8.png"),pygame.image.load("SpritesKaren/dean1.9.png")]
+    hero_images_left=[pygame.image.load("SpritesKaren/dean1.5.png"),pygame.image.load("SpritesKaren/dean1.6.png"),pygame.image.load("SpritesKaren/dean1.7.png")]
+    background_image=pygame.image.load("SpritesKaren/background.png") #загружаем фон
     level = [
             "                         ",
             "                         ",

@@ -46,7 +46,7 @@ while game:
     if event == 'Игра Альбера':
         game = False
         a = 1
-    if event == 'Игра Карена':
+    if event == 'Игра Карена ':
         a = 2
         game = False
     if event == 'Игра Михаила':

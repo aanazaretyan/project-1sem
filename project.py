@@ -9,9 +9,13 @@ pygame.init()
 #pygame.display.set_caption('Game Library')
 
 layout = [
-    [sg.Button('Игра Альбера'), sg.Text('Игра для двоих'), sg.Image('Images/ИграАльберта.PNG')],
-    [sg.Button('Игра Карена'), sg.Text('Игра \nдля любителей \nпопрыгать'), sg.Image('Images/ИграКарена.PNG')],
-    [sg.Button('Игра Михаила'), sg.Text('Игра про Трампа'), sg.Image('Images/ИграМихаила.PNG')]
+    [sg.Text('Добро пожаловать в наш лаунчер!')],
+    [sg.Text('Здесь вы можете выбрать игру на свой вкус: \n1 - Игра для двоих, 2 - Игра для любителей попрыгать, 3 - Игра про Трампа')],
+    [sg.Text('Для того чтобы начать играть, нажмите на название игры \nили выберите соответствующую клавишу (1,2,3) на клавиатуре (но пока второе не работает)')],
+    [sg.Text('1 -'), sg.Button('Игра Альбера'), sg.Image('Images/ИграАльберта.PNG')],
+    [sg.Text('2 -'), sg.Button('Игра Карена '), sg.Image('Images/ИграКарена.PNG')],
+    [sg.Text('3 -'), sg.Button('Игра Михаила'), sg.Image('Images/ИграМихаила.PNG')],
+    [sg.Text('Если вы хотите поддержать наш проек, отправьте немного денег на этот счет: **********')]
 ]
 
 window = sg.Window('Выбор игры', layout)
@@ -24,23 +28,24 @@ while game:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             game = False 
-        elif keys[pygame.K_1]:
-            a = 1
-            game = False
-        elif keys[pygame.K_2]:
-            a = 2
-            game = False
-        elif keys[pygame.K_3]:
-            a = 3
-            game = False
+
+    if keys[pygame.K_1]:
+        a = 1
+        game = False
+    if keys[pygame.K_2]:
+        a = 2
+        game = False
+    if keys[pygame.K_3]:
+        a = 3
+        game = False
 
     event, values = window.read()
     # print(event, values) #debug
     if event in (None, 'Exit', 'Cancel'):
         break
     if event == 'Игра Альбера':
-        a = 1
         game = False
+        a = 1
     if event == 'Игра Карена':
         a = 2
         game = False

@@ -29,11 +29,11 @@ if a == 1:
     pygame.display.set_caption('The fastest finger in the world')
 
 
-    albert_p1 = pygame.transform.scale(pygame.image.load('albert.Up.png'), ((15 * winx) // 100, (15 * winy) // 100))
-    albert_p2 = pygame.transform.scale(pygame.image.load('albert.Down.png'), ((15 * winx) // 100, (15 * winy) // 100))
-    albert_p3 = pygame.transform.scale(pygame.image.load('albert.Left.png'), ((15 * winx) // 100, (15 * winy) // 100))
-    albert_p4 = pygame.transform.scale(pygame.image.load('albert.Right.png'), ((15 * winx) // 100, (15 * winy) // 100))
-    albert_Bg = pygame.transform.scale(pygame.image.load('albert.Bg.png'), (winx, winy))
+    albert_p1 = pygame.transform.scale(pygame.image.load('SpritesAlbert/albert.Up.png'), ((15 * winx) // 100, (15 * winy) // 100))
+    albert_p2 = pygame.transform.scale(pygame.image.load('SpritesAlbert/albert.Down.png'), ((15 * winx) // 100, (15 * winy) // 100))
+    albert_p3 = pygame.transform.scale(pygame.image.load('SpritesAlbert/albert.Left.png'), ((15 * winx) // 100, (15 * winy) // 100))
+    albert_p4 = pygame.transform.scale(pygame.image.load('SpritesAlbert/albert.Right.png'), ((15 * winx) // 100, (15 * winy) // 100))
+    albert_Bg = pygame.transform.scale(pygame.image.load('SpritesAlbert/albert.Bg.png'), (winx, winy))
 
     x = [(10 * winx) // 100, (32 * winx) // 100, (53 * winx) // 100, (74 * winx) // 100]
     y = (32 * winy) // 100

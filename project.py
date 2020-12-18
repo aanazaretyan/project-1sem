@@ -1,8 +1,22 @@
 import pygame, random, time
-pygame.init()
+import PySimpleGUI as sg
 
-win_launcher = pygame.display.set_mode((500, 500))
-pygame.display.set_caption('Game Library')
+sg.theme('DarkAmber')
+
+pygame.init()
+#PySimpleGUI.init()
+
+#win_launcher = pygame.display.set_mode((500, 500))
+#pygame.display.set_caption('Game Library')
+
+layout = [
+    [sg.Button('Игра Альбера')],
+    [sg.Button('Игра Карена')],
+    [sg.Button('Игра Михаила')],
+    [sg.Output(size=(100, 20))]
+]
+
+window = sg.Window('Выбор игры', layout)
 
 game = True
 a = 0
@@ -22,6 +36,19 @@ while game:
             a = 3
             game = False
 
+    event, values = window.read()
+    # print(event, values) #debug
+    if event in (None, 'Exit', 'Cancel'):
+        break
+    if event == 'Игра Альбера':
+        a = 1
+        game = False
+    if event == 'Игра Карена':
+        a = 2
+        game = False
+    if event == 'Игра Михаила':
+        a = 3
+        game = False
 
 if a == 1:
     winx = 500

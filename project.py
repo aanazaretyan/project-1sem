@@ -4,16 +4,14 @@ import PySimpleGUI as sg
 sg.theme('DarkAmber')
 
 pygame.init()
-#PySimpleGUI.init()
 
 #win_launcher = pygame.display.set_mode((500, 500))
 #pygame.display.set_caption('Game Library')
 
 layout = [
-    [sg.Button('Игра Альбера')],
-    [sg.Button('Игра Карена')],
-    [sg.Button('Игра Михаила')],
-    [sg.Output(size=(100, 20))]
+    [sg.Button('Игра Альбера'), sg.Text('Игра для двоих'), sg.Image('Images/ИграАльберта.PNG')],
+    [sg.Button('Игра Карена'), sg.Text('Игра \nдля любителей \nпопрыгать'), sg.Image('Images/ИграКарена.PNG')],
+    [sg.Button('Игра Михаила'), sg.Text('Игра про Трампа'), sg.Image('Images/ИграМихаила.PNG')]
 ]
 
 window = sg.Window('Выбор игры', layout)

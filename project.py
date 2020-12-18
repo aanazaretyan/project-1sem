@@ -7,19 +7,20 @@ pygame.display.set_caption('Game Library')
 game = True
 a = 0
 while game:
+    keys = pygame.key.get_pressed()
+
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             game = False 
-        elif event.type == pygame.KEYDOWN:
-            if event.key == pygame.K_UP:
-                a = 1
-                game = False
-            if event.key == pygame.K_LEFT:
-                a = 2
-                game = False
-            if event.key == pygame.K_RIGHT:
-                a = 3
-                game = False
+        elif keys[pygame.K_1]:
+            a = 1
+            game = False
+        elif keys[pygame.K_2]:
+            a = 2
+            game = False
+        elif keys[pygame.K_3]:
+            a = 3
+            game = False
 
 
 if a == 1:

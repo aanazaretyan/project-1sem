@@ -11,11 +11,11 @@ pygame.init()
 layout = [
     [sg.Text('Добро пожаловать в наш лаунчер!')],
     [sg.Text('Здесь вы можете выбрать игру на свой вкус: \n1 - Игра для двоих, 2 - Игра для любителей попрыгать, 3 - Игра про Трампа')],
-    [sg.Text('Для того чтобы начать играть, нажмите на название игры)')],
-    [sg.Button(image_filename = 'Images/ИграАльберта.PNG', key = 'firstGame')],
-    [sg.Button(image_filename = 'Images/ИграКарена.PNG', key = 'secondGame')],
-    [sg.Button(image_filename = 'Images/ИграМихаила.PNG', key = 'thirdGame')],
-    [sg.Text('Если вы хотите поддержать наш проект, отправьте немного денег на этот счет: **********')],
+    [sg.Text('Для того чтобы начать играть, нажмите на иконку игры')],
+    [sg.Button(image_filename = 'Images/ИграАльберта.PNG', image_size=(450,100), key = 'firstGame')],
+    [sg.Button(image_filename = 'Images/ИграКарена.PNG' image_size=(450,260), key = 'secondGame')],
+    [sg.Button(image_filename = 'Images/ИграМихаила.PNG', image_size=(450,100), key = 'thirdGame')],
+    [sg.Text('Если вы хотите поддержать наш проект, \nотправьте немного денег на этот счет: **********')],
     [sg.Button(button_text = 'Exit', key = 'Exit')]
 ]
 

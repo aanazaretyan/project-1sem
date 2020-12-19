@@ -12,10 +12,11 @@ layout = [
     [sg.Text('Добро пожаловать в наш лаунчер!')],
     [sg.Text('Здесь вы можете выбрать игру на свой вкус: \n1 - Игра для двоих, 2 - Игра для любителей попрыгать, 3 - Игра про Трампа')],
     [sg.Text('Для того чтобы начать играть, нажмите на название игры)')],
-    [sg.Text('1 -'), sg.Button('Игра Альберта'), sg.Image('Images/ИграАльберта.PNG')],
-    [sg.Text('2 -'), sg.Button('Игра Карена '), sg.Image('Images/ИграКарена.PNG')],
-    [sg.Text('3 -'), sg.Button('Игра Михаила'), sg.Image('Images/ИграМихаила.PNG')],
-    [sg.Text('Если вы хотите поддержать наш проек, отправьте немного денег на этот счет: **********')]
+    [sg.Button(image_filename = 'Images/ИграАльберта.PNG', key = 'firstGame')],
+    [sg.Button(image_filename = 'Images/ИграКарена.PNG', key = 'secondGame')],
+    [sg.Button(image_filename = 'Images/ИграМихаила.PNG', key = 'thirdGame')],
+    [sg.Text('Если вы хотите поддержать наш проект, отправьте немного денег на этот счет: **********')],
+    [sg.Button(button_text = 'Exit', key = 'Exit')]
 ]
 
 window = sg.Window('Выбор игры', layout)
@@ -23,19 +24,19 @@ window = sg.Window('Выбор игры', layout)
 game = True
 a = 0
 while game:
-    keys = pygame.key.get_pressed()
 
     event, values = window.read()
-    # print(event, values) #debug
     if event in (None, 'Exit', 'Cancel'):
         break
-    if event == 'Игра Альберта':
+    if event == 'Exit':
+        game = False
+    if event == 'firstGame':
         game = False
         a = 1
-    if event == 'Игра Карена ':
+    if event == 'secondGame':
         a = 2
         game = False
-    if event == 'Игра Михаила':
+    if event == 'thirdGame':
         a = 3
         game = False
 

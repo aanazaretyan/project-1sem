@@ -44,9 +44,6 @@ if a == 1:
     
     pygame.init()
 
-    win = pygame.display.set_mode((500, 500))
-    pygame.display.set_caption('The fastest fingers in the world')
-    
     def countdown(a: int):
         '''Обратный отсчёт времени перед началом игры'''
         a = range(1, a+1)
@@ -66,7 +63,52 @@ if a == 1:
             win.blit(list[i], (235, 210))
             pygame.display.update()
             time.sleep(1)
-        
+
+    def left_player(e):
+        '''Добавление в память компьютера последние действия левого игрока'''
+        global l, c
+        if e == pygame.K_w: #1 - вверх, 2 - вниз, 3 - влево, 4 - вправо
+            l += [1]
+            if l[len(l)-1] != c[len(l)-1]:
+                l = []
+        if e == pygame.K_s:
+            l += [2]
+            if l[len(l)-1] != c[len(l)-1]:
+                l = []
+        if e == pygame.K_a:
+            l += [3]
+            if l[len(l)-1] != c[len(l)-1]:
+                l = []
+        if e == pygame.K_d:
+            l += [4]
+            if l[len(l)-1] != c[len(l)-1]:
+                l = []
+        return l
+
+    def right_player(e):
+        '''Добавление в память компьютера последние действия правого игрока'''
+        global r, c
+        if e == pygame.K_UP: #1 - вверх, 2 - вниз, 3 - влево, 4 - вправо
+            r += [1]
+            if r[len(r)-1] != c[len(r)-1]:
+                r = []
+        if e == pygame.K_DOWN:
+            r += [2]
+            if r[len(r)-1] != c[len(r)-1]:
+                r = []
+        if e == pygame.K_LEFT:
+            r += [3]
+            if r[len(r)-1] != c[len(r)-1]:
+                r = []
+        if e == pygame.K_RIGHT:
+            r += [4]
+            if r[len(r)-1] != c[len(r)-1]:
+                r = []
+        return r
+
+    win = pygame.display.set_mode((500, 500))
+    pygame.display.set_caption('The fastest fingers in the world')
+
     #menu option
     albert_menu_Bg = pygame.transform.scale(pygame.image.load('SpritesAlbert/albert.menu.bg.jpg'), (500, 500))
         
@@ -103,9 +145,7 @@ if a == 1:
     x = [60, 160, 260, 360]
     y = 150
 
-    l = []
     L = 0
-    r = []
     R = 0
     c = [random.randint(1, 4), random.randint(1, 4), random.randint(1, 4), random.randint(1, 4)] #condition
 
@@ -133,8 +173,9 @@ if a == 1:
         vic2 = font3.render('2`ND PLAYER WINS!!!', True, [0, 255, 0])
         vicpos = (30, 150)
 
-        print(c)
         countdown(5)
+        l = []
+        r = []    
         game = True
         while game:
             win.blit(albert_Bg, (0,0))
@@ -160,38 +201,8 @@ if a == 1:
                     game = False
 
                 elif event.type == pygame.KEYDOWN:
-                    if event.key == pygame.K_w: #1 - вверх, 2 - вниз, 3 - влево, 4 - вправо
-                        l += [1]
-                        if l[len(l)-1] != c[len(l)-1]:
-                            l = []
-                    if event.key == pygame.K_s:
-                        l += [2]
-                        if l[len(l)-1] != c[len(l)-1]:
-                            l = []
-                    if event.key == pygame.K_a:
-                        l += [3]
-                        if l[len(l)-1] != c[len(l)-1]:
-                            l = []
-                    if event.key == pygame.K_d:
-                        l += [4]
-                        if l[len(l)-1] != c[len(l)-1]:
-                            l = []
-                    if event.key == pygame.K_UP: #1 - вверх, 2 - вниз, 3 - влево, 4 - вправо
-                        r += [1]
-                        if r[len(r)-1] != c[len(r)-1]:
-                            r = []
-                    if event.key == pygame.K_DOWN:
-                        r += [2]
-                        if r[len(r)-1] != c[len(r)-1]:
-                            r = []
-                    if event.key == pygame.K_LEFT:
-                        r += [3]
-                        if r[len(r)-1] != c[len(r)-1]:
-                            r = []
-                    if event.key == pygame.K_RIGHT:
-                        r += [4]
-                        if r[len(r)-1] != c[len(r)-1]:
-                            r = []
+                    left_player(event.key)
+                    right_player(event.key)
             if len(l) == 4:
                 if l == c:
                     L += 1
@@ -512,6 +523,5 @@ elif a == 3:
         lowSpeed()
         drawWindow()
 
-        
     # на случай если программа не вышла прописываем функцию выхода еще раз
     pygame.quit()

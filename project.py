@@ -68,7 +68,7 @@ if a == 1:
             time.sleep(1)
         
     #menu option
-    albert_menu_Bg = pygame.transform.scale(pygame.image.load('albert.menu.bg.jpg'), (500, 500))
+    albert_menu_Bg = pygame.transform.scale(pygame.image.load('SpritesAlbert/albert.menu.bg.jpg'), (500, 500))
         
     font00 = pygame.font.Font(None, 40)
     font01 = pygame.font.Font(None, 25)
@@ -92,13 +92,13 @@ if a == 1:
                     menu = False
     
 
-    albert_p1 = pygame.transform.scale(pygame.image.load('albert.Up.png'), (80, 80))
-    albert_p2 = pygame.transform.scale(pygame.image.load('albert.Down.png'), (80, 80))
-    albert_p3 = pygame.transform.scale(pygame.image.load('albert.Left.png'), (80, 80))
-    albert_p4 = pygame.transform.scale(pygame.image.load('albert.Right.png'), (80, 80))
-    albert_Bg = pygame.transform.scale(pygame.image.load('albert.Bg.png'), (500, 500))
-    albert_arrows = pygame.transform.scale(pygame.image.load('albert.arrows.png'), (80, 80))
-    albert_wasd = pygame.transform.scale(pygame.image.load('albert.wasd.png'), (80, 80))
+    albert_p1 = pygame.transform.scale(pygame.image.load('SpritesAlbert/albert.Up.png'), (80, 80))
+    albert_p2 = pygame.transform.scale(pygame.image.load('SpritesAlbert/albert.Down.png'), (80, 80))
+    albert_p3 = pygame.transform.scale(pygame.image.load('SpritesAlbert/albert.Left.png'), (80, 80))
+    albert_p4 = pygame.transform.scale(pygame.image.load('SpritesAlbert/albert.Right.png'), (80, 80))
+    albert_Bg = pygame.transform.scale(pygame.image.load('SpritesAlbert/albert.Bg.png'), (500, 500))
+    albert_arrows = pygame.transform.scale(pygame.image.load('SpritesAlbert/albert.arrows.png'), (80, 80))
+    albert_wasd = pygame.transform.scale(pygame.image.load('SpritesAlbert/albert.wasd.png'), (80, 80))
 
     x = [60, 160, 260, 360]
     y = 150

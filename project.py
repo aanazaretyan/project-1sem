@@ -41,20 +41,65 @@ while game:
         game = False
 
 if a == 1:
-    winx = 500
-    winy = 500
-    win = pygame.display.set_mode((winx, winy))
-    pygame.display.set_caption('The fastest finger in the world')
+    
+    win = pygame.display.set_mode((500, 500))
+    pygame.display.set_caption('The fastest fingers in the world')
+    
+    def countdown(a: int):
+    '''Обратный отсчёт времени перед началом игры'''
+    a = range(1, a+1)
+    a = a[::-1]
+    fontBIG = pygame.font.Font(None, 80)
+    list = [fontBIG.render('0', True, [0, 0, 0]), fontBIG.render('1', True, [0, 0, 0]), fontBIG.render('2', True, [0, 0, 0]), fontBIG.render('3', True, [0, 0, 0]), fontBIG.render('4', True, [0, 0, 0]), fontBIG.render('5', True, [0, 0, 0]), fontBIG.render('6', True, [0, 0, 0]), fontBIG.render('7', True, [0, 0, 0])]
+    for i in a:
+        win.blit(list[i], (50, 50))
+        win.blit(albert_Bg, (0,0))
+        win.blit(text, textpos)
+        win.blit(R_player, R_playerpos)
+        win.blit(L_player, L_playerpos)
+        win.blit(R_score[R], R_scorepos)
+        win.blit(L_score[L], L_scorepos)
+        win.blit(albert_wasd, (20, 400))
+        win.blit(albert_arrows, (400, 400))
+        win.blit(list[i], (235, 210))
+        pygame.display.update()
+        time.sleep(1)
+        
+#menu option
+    albert_menu_Bg = pygame.transform.scale(pygame.image.load('albert.menu.bg.jpg'), (500, 500))
+        
+    font00 = pygame.font.Font(None, 40)
+    font01 = pygame.font.Font(None, 25)
+    menu = True
+    while menu:
+        win.blit(albert_menu_Bg, (0,0))
+        win.blit(font00.render('Добро пожаловать в игру', True, [0, 0, 0]), (70, 10))
+        win.blit(font00.render('"Самые быстрые пальцы в мире"', True, [0, 0, 0]), (25, 40))
+        win.blit(font01.render('Нажмите пробел для продолжения...', True, [0, 0, 0]), (90, 470))
+        win.blit(font01.render('Если вы ошиблись, начинайте вводить символы заново', True, [0, 0, 0]), (5, 100))
+        win.blit(font01.render('Обратите внимание, игра только для двух игроков!', True, [0, 0, 0]), (5, 120))
+        
+        pygame.display.update()
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                menu = False
+                pygame.quit()
+                
+            elif event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_SPACE:
+                    menu = False
+    
 
+    albert_p1 = pygame.transform.scale(pygame.image.load('albert.Up.png'), (80, 80))
+    albert_p2 = pygame.transform.scale(pygame.image.load('albert.Down.png'), (80, 80))
+    albert_p3 = pygame.transform.scale(pygame.image.load('albert.Left.png'), (80, 80))
+    albert_p4 = pygame.transform.scale(pygame.image.load('albert.Right.png'), (80, 80))
+    albert_Bg = pygame.transform.scale(pygame.image.load('albert.Bg.png'), (500, 500))
+    albert_arrows = pygame.transform.scale(pygame.image.load('albert.arrows.png'), (80, 80))
+    albert_wasd = pygame.transform.scale(pygame.image.load('albert.wasd.png'), (80, 80))
 
-    albert_p1 = pygame.transform.scale(pygame.image.load('SpritesAlbert/albert.Up.png'), ((15 * winx) // 100, (15 * winy) // 100))
-    albert_p2 = pygame.transform.scale(pygame.image.load('SpritesAlbert/albert.Down.png'), ((15 * winx) // 100, (15 * winy) // 100))
-    albert_p3 = pygame.transform.scale(pygame.image.load('SpritesAlbert/albert.Left.png'), ((15 * winx) // 100, (15 * winy) // 100))
-    albert_p4 = pygame.transform.scale(pygame.image.load('SpritesAlbert/albert.Right.png'), ((15 * winx) // 100, (15 * winy) // 100))
-    albert_Bg = pygame.transform.scale(pygame.image.load('SpritesAlbert/albert.Bg.png'), (winx, winy))
-
-    x = [(10 * winx) // 100, (32 * winx) // 100, (53 * winx) // 100, (74 * winx) // 100]
-    y = (32 * winy) // 100
+    x = [60, 160, 260, 360]
+    y = 150
 
     l = []
     L = 0
@@ -63,111 +108,129 @@ if a == 1:
     c = [random.randint(1, 4), random.randint(1, 4), random.randint(1, 4), random.randint(1, 4)] #condition
 
     #TEXT
-    font = pygame.font.Font(None, 40) #None - шрифт (мб потом добавлю)
-    text = font.render('', True, [0, 0, 0])
-    textpos = (80, 10)
-    L_score = [font.render('0', True, [0, 0, 0]), font.render('1', True, [0, 0, 0]), font.render('2', True, [0, 0, 0]), font.render('3', True, [0, 0, 0]), font.render('4', True, [0, 0, 0]), font.render('5', True, [0, 0, 0])]
-    L_scorepos = (10, 70)
-    R_score = [font.render('0', True, [0, 0, 0]), font.render('1', True, [0, 0, 0]), font.render('2', True, [0, 0, 0]), font.render('3', True, [0, 0, 0]), font.render('4', True, [0, 0, 0]), font.render('5', True, [0, 0, 0])]
-    R_scorepos = (445, 70)
-    font2 = pygame.font.Font(None, 60)
-    vic1 = font2.render('1`ST PLAYER WINS!!!', True, [0, 255, 0])
-    vic2 = font2.render('2`ND PLAYER WINS!!!', True, [0, 255, 0])
-    vicpos = (20, 150)
+    gameover = 0
+    try:
+        win.blit(albert_menu_Bg, (0,0))
+    except pygame.error:
+        gameover = 1
+    if gameover != 1:
+        font = pygame.font.Font(None, 40) #None - шрифт (мб потом добавлю)
+        font2 = pygame.font.Font(None, 30)
+        font3 = pygame.font.Font(None, 60)
+        text = font.render('', True, [0, 0, 0])
+        textpos = (93, 10)
+        L_player = font2.render('PLAYER 1', True, [0, 0, 0])
+        L_playerpos = (5, 70)
+        R_player = font2.render('PLAYER 2', True, [0, 0, 0])
+        R_playerpos = (400, 70)
+        L_score = [font.render('0', True, [0, 0, 0]), font.render('1', True, [0, 0, 0]), font.render('2', True, [0, 0, 0]), font.render('3', True, [0, 0, 0]), font.render('4', True, [0, 0, 0]), font.render('5', True, [0, 0, 0])]
+        L_scorepos = (30, 100)
+        R_score = [font.render('0', True, [0, 0, 0]), font.render('1', True, [0, 0, 0]), font.render('2', True, [0, 0, 0]), font.render('3', True, [0, 0, 0]), font.render('4', True, [0, 0, 0]), font.render('5', True, [0, 0, 0])]
+        R_scorepos = (455, 100)
+        vic1 = font3.render('1`ST PLAYER WINS!!!', True, [0, 255, 0])
+        vic2 = font3.render('2`ND PLAYER WINS!!!', True, [0, 255, 0])
+        vicpos = (30, 150)
 
-
-
-
-    game = True
-    while game:
-        win.blit(albert_Bg, (0,0))
-        win.blit(text, textpos)
-        win.blit(L_score[L], L_scorepos)
-        win.blit(R_score[R], R_scorepos)
-        for i in range(4):
-            if c[i] == 1:
-                win.blit(albert_p1, (x[i], y))
-            elif c[i] == 2:
-                win.blit(albert_p2, (x[i], y))
-            elif c[i] == 3:
-                win.blit(albert_p3, (x[i], y))
-            else:
-                win.blit(albert_p4, (x[i], y))
-        pygame.display.update()
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                game = False
-
-            elif event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_w: #1 - вверх, 2 - вниз, 3 - влево, 4 - вправо
-                    l += [1]
-                    if l[len(l)-1] != c[len(l)-1]:
-                        l = []
-                if event.key == pygame.K_s:
-                    l += [2]
-                    if l[len(l)-1] != c[len(l)-1]:
-                        l = []
-                if event.key == pygame.K_a:
-                    l += [3]
-                    if l[len(l)-1] != c[len(l)-1]:
-                        l = []
-                if event.key == pygame.K_d:
-                    l += [4]
-                    if l[len(l)-1] != c[len(l)-1]:
-                        l = []
-                if event.key == pygame.K_UP: #1 - вверх, 2 - вниз, 3 - влево, 4 - вправо
-                    r += [1]
-                    if r[len(r)-1] != c[len(r)-1]:
-                        r = []
-                if event.key == pygame.K_DOWN:
-                    r += [2]
-                    if r[len(r)-1] != c[len(r)-1]:
-                        r = []
-                if event.key == pygame.K_LEFT:
-                    r += [3]
-                    if r[len(r)-1] != c[len(r)-1]:
-                        r = []
-                if event.key == pygame.K_RIGHT:
-                    r += [4]
-                    if r[len(r)-1] != c[len(r)-1]:
-                        r = []
-        if len(l) == 4:
-            if l == c:
-                L += 1
-                c = [random.randint(1, 4), random.randint(1, 4), random.randint(1, 4), random.randint(1, 4)]
-                text = font.render('Last Winner is Player1!', True, [0, 0, 0])
-                r = []
-                l = []
-                if L == 5:
-                    win.blit(albert_Bg, (0,0))
-                    win.blit(L_score[L], L_scorepos)
-                    win.blit(vic1, vicpos)
-                    win.blit(R_score[R], R_scorepos)
-                    pygame.display.update()
-                    time.sleep(5)
+        print(c)
+        countdown(5)
+        game = True
+        while game:
+            win.blit(albert_Bg, (0,0))
+            win.blit(text, textpos)
+            win.blit(R_player, R_playerpos)
+            win.blit(L_player, L_playerpos)
+            win.blit(R_score[R], R_scorepos)
+            win.blit(L_score[L], L_scorepos)
+            win.blit(albert_wasd, (20, 400))
+            win.blit(albert_arrows, (400, 400))
+            for i in range(4):
+                if c[i] == 1:
+                    win.blit(albert_p1, (x[i], y))
+                elif c[i] == 2:
+                    win.blit(albert_p2, (x[i], y))
+                elif c[i] == 3:
+                    win.blit(albert_p3, (x[i], y))
+                else:
+                    win.blit(albert_p4, (x[i], y))
+            pygame.display.update()
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT:
                     game = False
-            else:
-                l = []
-        if len(r) == 4:
-            if r == c:
-                R += 1
-                if R == 5:
-                    game = False
-                c = [random.randint(1, 4), random.randint(1, 4), random.randint(1, 4), random.randint(1, 4)]
-                text = font.render('Last Winner is Player2!', True, [0, 0, 0])
-                r = []
-                l = []
-                if R == 5:
-                    win.blit(albert_Bg, (0,0))
-                    win.blit(L_score[L], L_scorepos)
-                    win.blit(vic2, vicpos)
-                    win.blit(R_score[R], R_scorepos)
-                    pygame.display.update()
-                    time.sleep(5)
-                    game = False
-            else:
-                r = []
-    pygame.quit()
+
+                elif event.type == pygame.KEYDOWN:
+                    if event.key == pygame.K_w: #1 - вверх, 2 - вниз, 3 - влево, 4 - вправо
+                        l += [1]
+                        if l[len(l)-1] != c[len(l)-1]:
+                            l = []
+                    if event.key == pygame.K_s:
+                        l += [2]
+                        if l[len(l)-1] != c[len(l)-1]:
+                            l = []
+                    if event.key == pygame.K_a:
+                        l += [3]
+                        if l[len(l)-1] != c[len(l)-1]:
+                            l = []
+                    if event.key == pygame.K_d:
+                        l += [4]
+                        if l[len(l)-1] != c[len(l)-1]:
+                            l = []
+                    if event.key == pygame.K_UP: #1 - вверх, 2 - вниз, 3 - влево, 4 - вправо
+                        r += [1]
+                        if r[len(r)-1] != c[len(r)-1]:
+                            r = []
+                    if event.key == pygame.K_DOWN:
+                        r += [2]
+                        if r[len(r)-1] != c[len(r)-1]:
+                            r = []
+                    if event.key == pygame.K_LEFT:
+                        r += [3]
+                        if r[len(r)-1] != c[len(r)-1]:
+                            r = []
+                    if event.key == pygame.K_RIGHT:
+                        r += [4]
+                        if r[len(r)-1] != c[len(r)-1]:
+                            r = []
+            if len(l) == 4:
+                if l == c:
+                    L += 1
+                    c = [random.randint(1, 4), random.randint(1, 4), random.randint(1, 4), random.randint(1, 4)]
+                    text = font.render('Last Winner is Player1!', True, [0, 0, 0])
+                    r = []
+                    l = []
+                    if L == 5:
+                        win.blit(albert_Bg, (0,0))
+                        win.blit(R_player, R_playerpos)
+                        win.blit(L_player, L_playerpos)
+                        win.blit(L_score[L], L_scorepos)
+                        win.blit(R_score[R], R_scorepos)
+                        win.blit(vic1, vicpos)
+                        pygame.display.update()
+                        time.sleep(4)
+                        game = False
+                else:
+                    l = []
+            if len(r) == 4:
+                if r == c:
+                    R += 1
+                    if R == 5:
+                        game = False
+                    c = [random.randint(1, 4), random.randint(1, 4), random.randint(1, 4), random.randint(1, 4)]
+                    text = font.render('Last Winner is Player2!', True, [0, 0, 0])
+                    r = []
+                    l = []
+                    if R == 5:
+                        win.blit(albert_Bg, (0,0))
+                        win.blit(L_score[L], L_scorepos)
+                        win.blit(vic2, vicpos)
+                        win.blit(R_score[R], R_scorepos)
+                        pygame.display.update()
+                        time.sleep(5)
+                        game = False
+                else:
+                    r = []
+        pygame.quit()
+    else:
+        pygame.quit()
 
 
 

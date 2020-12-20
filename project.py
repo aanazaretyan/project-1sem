@@ -25,23 +25,23 @@ def menu():
     game = True
     global a
     while game:
-
+        
         event, values = window.read()
         if event in (None, 'Exit', 'Cancel'):
             a = 0
             break
         if event == 'Exit':
             a = 0
-            game = False
+            break
         if event == 'firstGame':
-            game = False
             a = 1
+            break
         if event == 'secondGame':
             a = 2
-            game = False
+            break
         if event == 'thirdGame':
             a = 3
-            game = False
+            break
     window.close()
     return a
 
@@ -531,5 +531,4 @@ while a != 0:
             lowSpeed()
             drawWindow()
 
-        
         pygame.quit()

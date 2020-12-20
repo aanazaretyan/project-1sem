@@ -42,30 +42,32 @@ while game:
 
 if a == 1:
     
+    pygame.init()
+
     win = pygame.display.set_mode((500, 500))
     pygame.display.set_caption('The fastest fingers in the world')
     
     def countdown(a: int):
-    '''Обратный отсчёт времени перед началом игры'''
-    a = range(1, a+1)
-    a = a[::-1]
-    fontBIG = pygame.font.Font(None, 80)
-    list = [fontBIG.render('0', True, [0, 0, 0]), fontBIG.render('1', True, [0, 0, 0]), fontBIG.render('2', True, [0, 0, 0]), fontBIG.render('3', True, [0, 0, 0]), fontBIG.render('4', True, [0, 0, 0]), fontBIG.render('5', True, [0, 0, 0]), fontBIG.render('6', True, [0, 0, 0]), fontBIG.render('7', True, [0, 0, 0])]
-    for i in a:
-        win.blit(list[i], (50, 50))
-        win.blit(albert_Bg, (0,0))
-        win.blit(text, textpos)
-        win.blit(R_player, R_playerpos)
-        win.blit(L_player, L_playerpos)
-        win.blit(R_score[R], R_scorepos)
-        win.blit(L_score[L], L_scorepos)
-        win.blit(albert_wasd, (20, 400))
-        win.blit(albert_arrows, (400, 400))
-        win.blit(list[i], (235, 210))
-        pygame.display.update()
-        time.sleep(1)
+        '''Обратный отсчёт времени перед началом игры'''
+        a = range(1, a+1)
+        a = a[::-1]
+        fontBIG = pygame.font.Font(None, 80)
+        list = [fontBIG.render('0', True, [0, 0, 0]), fontBIG.render('1', True, [0, 0, 0]), fontBIG.render('2', True, [0, 0, 0]), fontBIG.render('3', True, [0, 0, 0]), fontBIG.render('4', True, [0, 0, 0]), fontBIG.render('5', True, [0, 0, 0]), fontBIG.render('6', True, [0, 0, 0]), fontBIG.render('7', True, [0, 0, 0])]
+        for i in a:
+            win.blit(list[i], (50, 50))
+            win.blit(albert_Bg, (0,0))
+            win.blit(text, textpos)
+            win.blit(R_player, R_playerpos)
+            win.blit(L_player, L_playerpos)
+            win.blit(R_score[R], R_scorepos)
+            win.blit(L_score[L], L_scorepos)
+            win.blit(albert_wasd, (20, 400))
+            win.blit(albert_arrows, (400, 400))
+            win.blit(list[i], (235, 210))
+            pygame.display.update()
+            time.sleep(1)
         
-#menu option
+    #menu option
     albert_menu_Bg = pygame.transform.scale(pygame.image.load('albert.menu.bg.jpg'), (500, 500))
         
     font00 = pygame.font.Font(None, 40)

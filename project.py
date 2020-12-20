@@ -3,6 +3,19 @@ import PySimpleGUI as sg
 
 a = 4
 
+class snaryad():
+    '''Класс, описывающий снаряд'''
+    def __init__(self,x,y,r,colour,direction):
+        self.x = x
+        self.y = y
+        self.r = r
+        self.colour = colour
+        self.direction = direction
+        self.bulletSpeed = 8 * direction
+
+    def draw(self, win):
+        pygame.draw.circle(win,self.colour,(self.x,self.y),self.r)
+
 def menu():
     sg.theme('DarkAmber')
 
@@ -25,7 +38,7 @@ def menu():
     game = True
     global a
     while game:
-        
+
         event, values = window.read()
         if event in (None, 'Exit', 'Cancel'):
             a = 0
@@ -391,18 +404,6 @@ while a != 0:
             win.blit(text2,(40,30))
             win.blit(text3,(40,50))
 
-        class snaryad():
-            '''Класс, описывающий снаряд'''
-            def __init__(self,x,y,r,colour,direction):
-                self.x = x
-                self.y = y
-                self.r = r
-                self.colour = colour
-                self.direction = direction
-                self.bulletSpeed = 8 * direction
-
-            def draw(self, win):
-                pygame.draw.circle(win,self.colour,(self.x,self.y),self.r)
 
         clock = pygame.time.Clock()
 

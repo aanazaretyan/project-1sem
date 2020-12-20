@@ -1,44 +1,49 @@
 import pygame, random, time
 import PySimpleGUI as sg
 
-sg.theme('DarkAmber')
-
-pygame.init()
-
-#win_launcher = pygame.display.set_mode((500, 500))
-#pygame.display.set_caption('Game Library')
-
-layout = [
-    [sg.Text('Добро пожаловать в наш лаунчер!')],
-    [sg.Text('Здесь вы можете выбрать игру на свой вкус: \n1 - Игра для двоих, 2 - Игра для любителей попрыгать, 3 - Игра про Трампа')],
-    [sg.Text('Для того чтобы начать играть, нажмите на иконку игры')],
-    [sg.Button(image_filename = 'Images/ИграАльберта.PNG', image_size=(450,100), key = 'firstGame')],
-    [sg.Button(image_filename = 'Images/ИграКарена.PNG', image_size=(450,260), key = 'secondGame')],
-    [sg.Button(image_filename = 'Images/ИграМихаила.PNG', image_size=(450,100), key = 'thirdGame')],
-    [sg.Text('Если вы хотите поддержать наш проект, \nотправьте немного денег на этот счет: **********')],
-    [sg.Button(button_text = 'Exit', key = 'Exit')]
-]
-
-window = sg.Window('Выбор игры', layout)
-
-game = True
 a = 0
-while game:
 
-    event, values = window.read()
-    if event in (None, 'Exit', 'Cancel'):
-        break
-    if event == 'Exit':
-        game = False
-    if event == 'firstGame':
-        game = False
-        a = 1
-    if event == 'secondGame':
-        a = 2
-        game = False
-    if event == 'thirdGame':
-        a = 3
-        game = False
+def menu():
+    sg.theme('DarkAmber')
+
+    #win_launcher = pygame.display.set_mode((500, 500))
+    #pygame.display.set_caption('Game Library')
+
+    layout = [
+        [sg.Text('Добро пожаловать в наш лаунчер!')],
+        [sg.Text('Здесь вы можете выбрать игру на свой вкус: \n1 - Игра для двоих, 2 - Игра для любителей попрыгать, 3 - Игра про Трампа')],
+        [sg.Text('Для того чтобы начать играть, нажмите на иконку игры')],
+        [sg.Button(image_filename = 'Images/ИграАльберта.PNG', image_size=(450,100), key = 'firstGame')],
+        [sg.Button(image_filename = 'Images/ИграКарена.PNG', image_size=(450,260), key = 'secondGame')],
+        [sg.Button(image_filename = 'Images/ИграМихаила.PNG', image_size=(450,100), key = 'thirdGame')],
+        [sg.Text('Если вы хотите поддержать наш проект, \nотправьте немного денег на этот счет: **********')],
+        [sg.Button(button_text = 'Exit', key = 'Exit')]
+    ]
+
+    window = sg.Window('Выбор игры', layout)
+
+    game = True
+    global a
+    while game:
+
+        event, values = window.read()
+        if event in (None, 'Exit', 'Cancel'):
+            break
+        if event == 'Exit':
+            game = False
+        if event == 'firstGame':
+            game = False
+            a = 1
+        if event == 'secondGame':
+            a = 2
+            game = False
+        if event == 'thirdGame':
+            a = 3
+            game = False
+    window.close()
+    return a
+
+menu()
 
 if a == 1:
     

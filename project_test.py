@@ -4,9 +4,13 @@ import unittest
 
 class snaryadTest(unittest.TestCase):
     def test_draw(self):
-    snaryad(project.x,project.y,5,project.colour,project.direction)
-    print((project.x,project.y))
-    self.assertAlmostEqual((project.x,project.y), (50,700 - 76))
+        x = 50
+        y = 700 - 76
+        colour = (50,50,50)
+        r = 5
+        direction = 1
+        bullet = snaryad(x,y,r,colour,direction)
+        self.assertAlmostEqual((bullet.x,bullet.y), (50,700 - 76))
 
 
 if __name__=='__main__':

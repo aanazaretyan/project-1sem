@@ -507,6 +507,7 @@ if __name__ == "__main__":
                 # время через которое цикл будет обновляться
                 clock.tick(30)
 
+                # Перемещение патрона
                 for bullet in bullets:
                     if bullet.x < 1000 and bullet.x > 0:
                         bullet.x += bullet.bulletSpeed
@@ -530,9 +531,7 @@ if __name__ == "__main__":
 
                 # запуск снаряда
                 if keys[pygame.K_f]:
-                    if len(bullets) < 10:
-                            bullets.append(snaryad(round(x + width // 2), round(y + height // 2), 
-                            5, RED, direction))
+                    bullets.append(snaryad(round(x + width // 2), round(y + height // 2), 5, RED, direction))
 
                         
                 # управление персонажем

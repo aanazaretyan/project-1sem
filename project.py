@@ -302,21 +302,21 @@ if __name__ == "__main__":
             isJump=False #переменные для создания прыжка 
             jump=0
             dt=0
-            gun_wight=40
+            gun_width=40 
             gun_height=15
             font=pygame.font.SysFont('arial', 32)
             follow=font.render('☺ Find the way out ☺', 1, (255,0,0))
             #переменные для создания уровня
-            level_platform_wight=32
+            level_platform_width=32
             level_platform_height=32
             clock=pygame.time.Clock() #управляющая кадрами в секунду
             game_over=False #конец игры    
             screen=pygame.display.set_mode((display)) #устанавливаем размер экрана
-            pygame.display.set_caption("Supernatural Quest") #даем название игры
+            pygame.display.set_caption("Supernatural Game") #даем название игры
             icon=pygame.image.load("SpritesKaren/icon.png")
             pygame.display.set_icon(icon) #установка иконы игры
-            platform_image=pygame.transform.scale(pygame.image.load('SpritesKaren/kblocks.png'),(level_platform_wight, level_platform_height) )
-            gun_image=pygame.transform.scale(pygame.image.load('SpritesKaren/gunone.png'),(gun_wight, gun_height) )
+            platform_image=pygame.transform.scale(pygame.image.load('SpritesKaren/kblocks.png'),(level_platform_width, level_platform_height) )
+            gun_image=pygame.transform.scale(pygame.image.load('SpritesKaren/gunone.png'),(gun_width, gun_height) )
             hero_image=pygame.image.load("SpritesKaren/dean1.2.png") #загрузка картинки персонажа
             hero_images_right=[pygame.image.load("SpritesKaren/dean1.4.png"), pygame.image.load("SpritesKaren/dean1.8.png"),pygame.image.load("SpritesKaren/dean1.9.png")]
             hero_images_left=[pygame.image.load("SpritesKaren/dean1.5.png"),pygame.image.load("SpritesKaren/dean1.6.png"),pygame.image.load("SpritesKaren/dean1.7.png")]
@@ -352,14 +352,16 @@ if __name__ == "__main__":
                             gun=gun_image
                             screen.blit(gun,(x,y)) 
                             
-                        x+=level_platform_wight #блоки платформы ставятся на ширине блоков
+                        x+=level_platform_width #блоки платформы ставятся на ширине блоков
                     y+=level_platform_height    #то же самое и с высотой
                     x=0                   #на каждой новой строчке начинаем с нуля
             @dataclass
             class Jump:
+                '''Creates class of Jump system'''
                 isJump:bool
                 jump:float
                 def update(self,isSpace,hero_y,dt):
+                    '''Defines rules of jumping'''
                     if not(self.isJump):
                         if isSpace:
                             self.isJump=True     
@@ -374,6 +376,7 @@ if __name__ == "__main__":
             jumping=Jump(False,0)                  
 
             while not game_over:
+                '''Creates the game cycle'''
                 for event in pygame.event.get(): #смотрим каждое событие из списка всех событий
                     if event.type==pygame.QUIT or ((hero_x>=620 and hero_x<=700) and (hero_y>=300 and hero_y<=350)): #проверяем, является ли тип события типом выхода из игры (событие:конец игры)
                         game_over=True

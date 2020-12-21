@@ -15,6 +15,10 @@ class snaryad():
 
     def draw(self, win):
         pygame.draw.circle(win,self.colour,(self.x,self.y),self.r)
+    
+    def movement(self, sec: float):
+        self.x += sec * self.bulletSpeed
+        return self.x
 
 def menu():
     sg.theme('DarkAmber')

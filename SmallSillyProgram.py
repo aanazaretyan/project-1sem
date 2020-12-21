@@ -1,13 +1,13 @@
 import pygame
 
-class object:
-    def __init__(self):
-        self.x : float = 40
-        self.y : float = 460
+class objectq:
+    def __init__(self,x,y,colour,speed_x,speed_y):
+        self.x : float = x
+        self.y : float = y
         self.r : float = 5
-        self.colour = (225,50,50)
-        self.speed_x : float = 0.5
-        self.speed_y : float = 0.25
+        self.colour = colour
+        self.speed_x : float = speed_x
+        self.speed_y : float = speed_y
 
     def draw(self, win):
         pygame.draw.circle(win,self.colour,(self.x,self.y),self.r)
@@ -37,7 +37,7 @@ if __name__=='__main__':
     win = pygame.display.set_mode((500,500))
     pygame.display.set_caption("Игра для тестов")
     win.fill((255,255,255))
-    Ball = object()
+    Ball = objectq(40.0,460.0,(255,0,50),0.5,0.5)
 
     run = True
     while run:

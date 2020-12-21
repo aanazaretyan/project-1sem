@@ -51,6 +51,16 @@ class snaryadTest(unittest.TestCase):
         a=bullet.movement(2)
         b=bullet.movement(1)
         self.assertAlmostEqual(b-a, -8)
+    def test_float_sec(self):
+        x = 50
+        y = 700 - 76
+        colour = (50,50,50)
+        r = 5
+        direction = -1
+        bullet = snaryad(x,y,r,colour,direction)        
+        a=bullet.movement(2.5)
+        b=bullet.movement(1.5)
+        self.assertAlmostEqual(b-a, -12)
 
 if __name__=='__main__':
     unittest.main()

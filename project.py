@@ -6,6 +6,14 @@ a = 4
 class snaryad():
     '''Класс, описывающий снаряд'''
     def __init__(self,x,y,r,colour,direction):
+        '''
+        self.x - координата по Х
+        self.y - координата по у
+        self.r - радиус снаряда
+        self.colour - цвет снаряда
+        self.direction - направление движения снаряда (если direction = 1, то снаряд летит вправо, если direction = -1, то снаряд летит влево)
+        self.bulletSpeed - скорость снаряда
+        '''
         self.x = x
         self.y = y
         self.r = r
@@ -14,9 +22,15 @@ class snaryad():
         self.bulletSpeed = 8 * direction
 
     def draw(self, win):
+        '''
+        функция прорисовки снаряда
+        '''
         pygame.draw.circle(win,self.colour,(self.x,self.y),self.r)
     
     def movement(self, sec: float):
+        '''
+        функция перемещения снаряда
+        '''
         self.x += sec * self.bulletSpeed
         return self.x
 
